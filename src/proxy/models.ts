@@ -17,6 +17,31 @@ export interface ClaudeAuthStatus {
   email?: string
 }
 
+export interface TokenBudget {
+  inputTokens: number
+  cacheReadInputTokens: number
+  cacheCreationInputTokens: number
+  outputTokens: number
+  usedTokens: number
+  maxTokens: number
+  totalProcessedTokens: number
+  toolUses: number
+  durationMs: number
+}
+
+export const DEFAULT_TOKEN_BUDGET = (): TokenBudget => ({
+  inputTokens: 0,
+  cacheReadInputTokens: 0,
+  cacheCreationInputTokens: 0,
+  outputTokens: 0,
+  usedTokens: 0,
+  maxTokens: 0,
+  totalProcessedTokens: 0,
+  toolUses: 0,
+  durationMs: 0,
+})
+
+export const defaultTokenBudget = DEFAULT_TOKEN_BUDGET
 
 const AUTH_STATUS_CACHE_TTL_MS = 60_000
 /** Shorter TTL for failed auth checks — retry sooner to recover */
